@@ -13,7 +13,9 @@ gem 'pg'
 # front-end
 gem 'react-rails', '~> 1.0'
 gem 'slim-rails'
-
+gem 'bourbon'
+gem 'neat'
+gem 'refills'
 
 group :development do
   gem 'byebug'
