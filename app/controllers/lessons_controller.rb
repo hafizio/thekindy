@@ -15,23 +15,13 @@ class LessonsController < ApplicationController
   end
 
   def create
-    @lesson = Lesson.new(lesson_params)
-    @lesson.save
-
-    if request.xhr?
-      render json: Lesson.all
-    else
-      redirect_to :comments_path
-    end
+    Lesson.create(lesson_params)
+    ajaxify
   end
 
   def destroy
     @lesson.destroy
-    if request.xhr?
-      render json: Lesson.all
-    else
-      redirect_to :comments_path
-    end
+    ajaxify
   end
 
   private
@@ -42,5 +32,13 @@ class LessonsController < ApplicationController
 
   def lesson_params
     params.require(:lesson).permit(:title, :complexity, :tags, :objectives)
+  end
+
+  def ajaxify
+    if request.xhr?
+      render json: Lesson.all
+    else
+      redirect_to :comments_path
+    end
   end
 end
