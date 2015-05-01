@@ -3,6 +3,10 @@ var Lesson = React.createClass({
     this.props.onDelete(this.props.id)
   },
 
+  editLesson: function() {
+    this.props.onEdit(this.props.id)
+  },
+
   render: function() {
     return (
       <li>
@@ -11,6 +15,8 @@ var Lesson = React.createClass({
         <p>{ this.props.tags }</p>
         <p>{ this.props.objectives }</p>
         <a href="#delete" onClick={ this.deleteLesson }>delete me</a>
+        <br />
+        <a onClick={ this.editLesson }>edit</a>
       </li> 
     )
   }

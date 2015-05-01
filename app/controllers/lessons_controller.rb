@@ -1,7 +1,11 @@
 class LessonsController < ApplicationController
   protect_from_forgery with: :null_session
 
-  before_action :set_lesson, only: [:destroy]
+  before_action :set_lesson, only: [:show, :destroy]
+
+  def show
+    render json: @lesson
+  end
 
   def index
     @presenter = {

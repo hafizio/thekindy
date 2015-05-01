@@ -15,6 +15,18 @@ var LessonBox = React.createClass({
     });
   },
 
+  editLesson: function(lessonId) {
+    $.ajax({
+      url: '/lessons/' + lessonId,
+      type: "GET",
+      dataType: "json",
+      success: function(data) {
+        this.setState({ form: data });
+        console.log(data);
+      }
+    });
+  },
+
   deleteLesson: function(lessonId) {
     var lessons = this.state.lessons;
     var newLessons = lessons.filter(function(elem) {
@@ -36,7 +48,11 @@ var LessonBox = React.createClass({
   render: function() {
     return (
       <div>
-        <LessonList onDelete={ this.deleteLesson } lessons={ this.state.lessons }/>
+        <LessonList
+          onDelete={ this.deleteLesson }
+          onEdit={ this.editLesson  }
+          lessons={ this.state.lessons }
+        />
         <h2>Submit Lesson</h2>
         <LessonForm form={ this.state.form } onLessonSubmit={ this.handleLessonSubmit }/>
       </div>
