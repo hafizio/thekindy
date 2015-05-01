@@ -1,4 +1,8 @@
 var LessonForm = React.createClass({
+  handleChange: function(e) {
+    this.setState({ value: e.target.value });
+  },
+
   handleSubmit: function(e) {
     // prevent redirect
     e.preventDefault();
@@ -18,7 +22,7 @@ var LessonForm = React.createClass({
     var formData = $(this.refs.form.getDOMNode()).serialize();
     this.props.onLessonSubmit(formData, this.props.form.action);
 
-    // reset form
+    // reset form after submit
     this.refs.title.getDOMNode().value = '';
     this.refs.complexity.getDOMNode().value = '';
     this.refs.tags.getDOMNode().value = '';
@@ -26,15 +30,56 @@ var LessonForm = React.createClass({
   },
 
   render: function() {
+    // conditionals for update or create
+    var submitText = this.props.formData ? 'Update Lesson' : 'Create Lesson'
+    var formAction = this.props.formData ? '/lesson/' + this.props.formData.lessonId : '/lessons'
+    var formMethod = this.props.formData ? 'patch' : 'post'
+    var title, complexity, tags, objectives;
+    if (this.props.formData) {
+      title = this.props.formData.title;
+      complexity = this.props.formData.complexity;
+      tags = this.props.formData.tags;
+      objectives = this.props.formData.objectives;
+    }
+
     return (
       <div>
-        <form ref="form" action={ this.props.form.action } accept-charset="UTF-8" method="post" onSubmit={ this.handleSubmit }>
-          <input type="hidden" name={ this.props.form.csrf_param } value={ this.props.form.csrf_token } />
-          <input ref="title" name="lesson[title]" placeholder="Lesson Title" />
-          <input ref="complexity" type="number" name="lesson[complexity]" placeholder="Lesson Complexity" />
-          <input ref="tags" name="lesson[tags]" placeholder="Lesson Tags" />
-          <input ref="objectives" name="lesson[objectives]" placeholder="Lesson Objectives" />
-          <button type="submit">Post Lesson</button>
+        <form ref="form" action={ formAction } accept-charset="UTF-8" method={ formMethod } onSubmit={ this.handleSubmit }>
+          <input
+            type="hidden"
+            name={ this.props.form.csrf_param }
+            value={ this.props.form.csrf_token }
+          />
+          <input
+            ref="title"
+            name="lesson[title]"
+            placeholder="Lesson Title"
+            value={ title }
+            onChange= { this.handleChange }
+          />
+          <input
+            ref="complexity"
+            type="number"
+            name="lesson[complexity]"
+            placeholder="Lesson Complexity"
+            value={ complexity }
+            onChange= { this.handleChange }
+          />
+          <input
+            ref="tags"
+            name="lesson[tags]"
+            placeholder="Lesson Tags"
+            value={ tags }
+            onChange= { this.handleChange }
+          />
+          <input
+            ref="objectives"
+            name="lesson[objectives]"
+            placeholder="Lesson Objectives"
+            value={ objectives }
+            onChange= { this.handleChange }
+          />
+          <button type="submit">{ submitText }</button>
         </form>
       </div>
     )

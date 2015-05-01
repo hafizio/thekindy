@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
   protect_from_forgery with: :null_session
 
-  before_action :set_lesson, only: [:show, :destroy]
+  before_action :set_lesson, only: [:update, :show, :destroy]
 
   def show
     render json: @lesson
@@ -11,7 +11,6 @@ class LessonsController < ApplicationController
     @presenter = {
       lessons: Lesson.all,
       form: {
-        action: lessons_path,
         csrf_param: request_forgery_protection_token,
         csrf_token: form_authenticity_token
       }
@@ -25,6 +24,11 @@ class LessonsController < ApplicationController
 
   def destroy
     @lesson.destroy
+    ajaxify
+  end
+
+  def update
+    @lesson.update(lesson_params)
     ajaxify
   end
 
