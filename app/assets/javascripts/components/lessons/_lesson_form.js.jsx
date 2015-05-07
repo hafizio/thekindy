@@ -55,7 +55,7 @@ var LessonForm = React.createClass({
             name="lesson[title]"
             placeholder="Lesson Title"
             defaultValue={ title }
-            onChange= { this.handleChange }
+            onChange={ this.handleChange }
           />
           <input
             ref="complexity"
@@ -63,21 +63,21 @@ var LessonForm = React.createClass({
             name="lesson[complexity]"
             placeholder="Lesson Complexity"
             defaultValue={ complexity }
-            onChange= { this.handleChange }
+            onChange={ this.handleChange }
           />
           <input
             ref="tags"
             name="lesson[tags]"
             placeholder="Lesson Tags"
             defaultValue={ tags }
-            onChange= { this.handleChange }
+            onChange={ this.handleChange }
           />
           <input
             ref="objectives"
             name="lesson[objectives]"
             placeholder="Lesson Objectives"
             defaultValue={ objectives }
-            onChange= { this.handleChange }
+            onChange={ this.handleChange }
           />
           <button type="submit">{ submitText }</button>
         </form>
