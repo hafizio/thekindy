@@ -46,7 +46,7 @@ class LessonsController < ApplicationController
     if request.xhr?
       render json: Lesson.all
     else
-      redirect_to :comments_path
+      render :index
     end
   end
 end

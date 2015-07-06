@@ -53,7 +53,11 @@ var LessonBox = React.createClass({
           lessons={ this.state.lessons }
         />
         <h2>Submit Lesson</h2>
-        <LessonForm form={ this.state.form } formData={ this.state.formData } onLessonSubmit={ this.handleLessonSubmit }/>
+        <LessonForm
+          form={ this.state.form }
+          formData={ this.state.formData }
+          onLessonSubmit={ this.handleLessonSubmit }
+        />
       </div>
     )
   }

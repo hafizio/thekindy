@@ -1,5 +1,8 @@
-h1 The Kindy
-section
-  aside This is something I want to build
-  article fjdsklfjsdlkfjdlsjdljfldjfsdj
-= link_to 'All Lessons', lessons_path
+section.hero
+  .hero__logo
+    = image_tag('https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png')
+  .hero__title
+    h1 The Kindy
+  .hero__description
+    p The future of collective parenting
+    = link_to 'All Lessons', lessons_path, class: 'hero__button'

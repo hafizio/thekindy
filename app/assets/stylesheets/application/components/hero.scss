@@ -1,0 +1,23 @@
+@import '../../base';
+
+.hero {
+  background-color: tomato;
+  @include outer-container();
+
+  &__logo {
+    text-align: center;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__description {
+    text-align: center;
+    color: green;
+  }
+
+  &__button {
+    @extend .btn;
+  }
+}
