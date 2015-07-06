@@ -1,0 +1,15 @@
+@import '../../base';
+
+.lesson-box {
+  @include outer-container();
+}
+
+.lesson-form {
+  @include span-columns(6);
+}
+
+.lessons {
+}
+
+.lesson {
+}

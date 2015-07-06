@@ -2,19 +2,21 @@
 
 .hero {
   background-color: tomato;
+  text-align: center;
+  padding: 20px 0px;
+  border-radius: 5px;
   @include outer-container();
 
   &__logo {
-    text-align: center;
   }
 
-  &__title {
-    text-align: center;
+  &__title h1 {
+    font-size: xx-large;
+    margin: 0px;
   }
 
   &__description {
-    text-align: center;
-    color: green;
+    color: white;
   }
 
   &__button {

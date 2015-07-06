@@ -44,7 +44,7 @@ var LessonForm = React.createClass({
 
     return (
       <div>
-        <form ref="form" action={ formAction } accept-charset="UTF-8" method={ formMethod } onSubmit={ this.handleSubmit }>
+        <form className="lesson-form" ref="form" action={ formAction } accept-charset="UTF-8" method={ formMethod } onSubmit={ this.handleSubmit }>
           <input
             type="hidden"
             name={ this.props.form.csrf_param }

@@ -46,7 +46,7 @@ var LessonBox = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="lesson-box">
         <LessonList
           onDelete={ this.deleteLesson }
           onEdit={ this.editLesson  }

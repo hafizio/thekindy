@@ -9,7 +9,7 @@ var Lesson = React.createClass({
 
   render: function() {
     return (
-      <li>
+      <li className="lesson">
         <h1>#{ this.props.id }, Title: { this.props.title }</h1>
         <p>{ this.props.complexity }</p>
         <p>{ this.props.tags }</p>

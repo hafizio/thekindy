@@ -9,7 +9,7 @@ var LessonList = React.createClass({
     });
 
     return (
-      <ul>
+      <ul className="lessons">
         { lessonNodes }
       </ul>
     )
